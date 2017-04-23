@@ -16,16 +16,18 @@
 </section>
 <section class="container">
     <div class="row">
-        <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
-            <div class="thumbnail">
-                <div class="caption">
-                    <p th:text="${product.name}" />
-                    <p th:text="${product.description}" />
-                    <p th:text="${product.unitPrice}" />
-                    <p th:text="'Liczba sztuk w magazynie:' + ${product.unitsInStock}" />
+        <span th:each="item : ${product}" >
+            <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <p th:text="${item.name}" />
+                        <p th:text="${item.description}" />
+                        <p th:text="${item.unitPrice}" />
+                        <p th:text="'Liczba sztuk w magazynie:' + ${item.unitsInStock}" />
+                    </div>
                 </div>
             </div>
-        </div>
+        </span>
     </div>
 </section>
 </body>

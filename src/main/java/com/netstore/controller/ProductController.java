@@ -1,6 +1,8 @@
 package com.netstore.controller;
 
 import com.netstore.model.Product;
+import com.netstore.model.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +16,12 @@ import java.math.BigDecimal;
 @Controller
 public class ProductController {
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @RequestMapping("/products")
     public String list(Model model) {
-        Product product = new Product("P1234","iPhone 5s", new BigDecimal(500));
-        product.setDescription("Apple iPhone 5s, smartfon z 4-calowym wyświetlaczem o rozdzielczości 640x1136 oraz 8-megapikselowym aparatem");
-        product.setCategory("Smart Phone");
-        product.setManufacturer("Apple");
-        product.setUnitsInStock(1000);
-        model.addAttribute("product", product);
+        model.addAttribute("product", productRepository.getAllProducts());
         return "products";
     }
 }
