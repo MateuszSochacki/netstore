@@ -1,17 +1,15 @@
-package com.netstore.model.repository;
+package com.netstore.service;
 
 import com.netstore.model.Product;
 
 import java.util.List;
 
 /**
- * Created by msoch_000 on 23-04-2017.
+ * Created by msoch_000 on 27-04-2017.
  */
-public interface ProductRepository {
+public interface ProductService {
 
     List<Product> getAllProducts();
-
-    Product getProductById(String productId);
-
+    Product getProductById(String productID);
     List<Product> getProductsByCategory(String category);
 }
