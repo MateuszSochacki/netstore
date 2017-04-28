@@ -29,6 +29,10 @@
             </div>
         </span>
     </div>
+    <form action="#" th:action="@{/productsPost}" th:object="${product}" method="post">
+        <p>Kategoria: <input type="text" th:field="*{category}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
 </section>
 </body>
 </html>

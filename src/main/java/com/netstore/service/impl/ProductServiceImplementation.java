@@ -30,4 +30,10 @@ public class ProductServiceImplementation implements ProductService {
     public List<Product> getProductsByCategory(String category) {
         return productRepository.getProductsByCategory(category);
     }
+
+    @Override
+    public void saveProduct(Product product) {
+
+        productRepository.saveProduct(product);
+    }
 }

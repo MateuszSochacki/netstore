@@ -65,6 +65,12 @@ public class ProductRepositoryImplementation implements ProductRepository {
     }
 
     @Override
+    public void saveProduct(Product product) {
+
+        listOfProducts.add(product);
+    }
+
+    @Override
     public List<Product> getAllProducts() {
         return listOfProducts;
     }
