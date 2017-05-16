@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -12,14 +12,21 @@
             <h1>Produkty</h1>
             <p>Wszystkie produkty dostępne w naszym sklepie</p>
         </div>
+        <section class="container">
+            <form th:action="@{/products/productsPost}" th:object="${newProduct}" method="post">
+                <p>Kategoria: <input type="text" th:field="*{category}" /></p>
+                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+            </form>
+        </section>
     </div>
 </section>
 <section class="container">
     <div class="row">
-        <span th:each="item : ${product}" >
+        <span th:each="item : ${device}" >
             <div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
                 <div class="thumbnail">
                     <div class="caption">
+                        <p th:text="${item.name}"/>
                         <p th:text="${item.name}" />
                         <p th:text="${item.description}" />
                         <p th:text="${item.unitPrice}" />
@@ -29,10 +36,7 @@
             </div>
         </span>
     </div>
-    <form action="#" th:action="@{/productsPost}" th:object="${product}" method="post">
-        <p>Kategoria: <input type="text" th:field="*{category}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-    </form>
 </section>
+
 </body>
 </html>

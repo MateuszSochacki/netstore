@@ -14,43 +14,43 @@ import java.math.BigDecimal;
  * Created by msoch_000 on 23-04-2017.
  */
 @Controller
-@RequestMapping("/products")
+
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @RequestMapping
+    @RequestMapping("/products")
     public String list(Model model) {
-        model.addAttribute("product", productService.getAllProducts());
+        model.addAttribute("device", productService.getAllProducts());
         return "products";
     }
 
-    @RequestMapping("/all")
+    @RequestMapping("/products/all")
     public String allProducts(Model model) {
-        model.addAttribute("product", productService.getAllProducts());
+        model.addAttribute("device", productService.getAllProducts());
         return "products";
     }
 
-    @RequestMapping("/{category}")
+    @RequestMapping("/products/{category}")
     public String getProductsByCategory(Model model, @PathVariable("category")String productCategory) {
-        model.addAttribute("product", productService.getProductsByCategory(productCategory));
+        model.addAttribute("device", productService.getProductsByCategory(productCategory));
         return "products";
     }
 
-    @GetMapping
+    @GetMapping("/products")
     public String showForm(Model model) {
         Product product = new Product();
-
-        model.addAttribute("product", product);
+        model.addAttribute("device", productService.getAllProducts());
+        model.addAttribute("newProduct", product);
         return "products";
     }
 
-    @PostMapping("/productsPost")
-    public String processForm(@ModelAttribute(value="product")Product product) {
+    @PostMapping(value="/products/productsPost")
+    public String processForm(@ModelAttribute Product product) {
 
         productService.saveProduct(product);
 
-        return "products";
+        return "redirect:/products";
     }
 }
